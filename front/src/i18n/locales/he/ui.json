@@ -79,6 +79,14 @@
       "email": "אימייל",
       "phone": "טלפון",
       "studio": "סטודיו"
+    },
+    "studioAddress": "תל אביב, ישראל",
+    "whatsapp": {
+      "name": "שם",
+      "email": "אימייל",
+      "phone": "טלפון",
+      "notSpecified": "לא צוין",
+      "message": "הודעה"
     }
   },
   "projects": {

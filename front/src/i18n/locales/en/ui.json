@@ -79,6 +79,14 @@
       "email": "Email",
       "phone": "Phone",
       "studio": "Studio"
+    },
+    "studioAddress": "Tel Aviv, Israel",
+    "whatsapp": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "notSpecified": "Not specified",
+      "message": "Message"
     }
   },
   "projects": {

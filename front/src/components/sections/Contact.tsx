@@ -46,7 +46,7 @@ export default function Contact() {
     {
       icon: HiOutlineLocationMarker,
       label: t('contact.info.studio'),
-      value: 'Tel Aviv, Israel',
+      value: t('contact.studioAddress'),
     },
   ]
 
@@ -55,11 +55,11 @@ export default function Contact() {
 
     const message = `**
 
-*Name:* ${formData.name}
-*Email:* ${formData.email}
-*Phone:* ${formData.phone || 'Not specified'}
+*${t('contact.whatsapp.name')}:* ${formData.name}
+*${t('contact.whatsapp.email')}:* ${formData.email}
+*${t('contact.whatsapp.phone')}:* ${formData.phone || t('contact.whatsapp.notSpecified')}
 
-*Message:*
+*${t('contact.whatsapp.message')}:*
 ${formData.message}`
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`

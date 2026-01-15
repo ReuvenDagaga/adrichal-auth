@@ -82,7 +82,7 @@ export default function Footer() {
                 theoffice.ad.studio@gmail.com
               </a>
               <Text size="sm" color="muted">
-                Tel Aviv, Israel
+                {t('contact.studioAddress')}
               </Text>
             </Stack>
           </div>
