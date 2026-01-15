@@ -7,7 +7,7 @@ import {
   clearAuthCookie,
   getAuthCookie,
   verifyJWT,
-  decodeExternalJWT,
+  verifyExternalJWT,
 } from '../../utils/auth';
 import { config } from '../../config';
 import { logger } from '../../utils/logger';
@@ -53,18 +53,12 @@ auth.get('/callback', async (c) => {
   }
 
   try {
-    // Decode the JWT from external service
-    const payload = decodeExternalJWT(externalToken);
+    // Verify the JWT from external service using JWKS
+    const payload = await verifyExternalJWT(externalToken);
 
     if (!payload) {
-      logger.warn('Failed to decode external JWT');
+      logger.warn('Failed to verify external JWT');
       return c.redirect(`${redirectBase}/admin/login?error=invalid_token`);
-    }
-
-    // Check if token is expired
-    if (payload.exp * 1000 < Date.now()) {
-      logger.warn('External token expired');
-      return c.redirect(`${redirectBase}/admin/login?error=token_expired`);
     }
 
     logger.info({ email: payload.email, sub: payload.sub }, 'Processing auth callback');
@@ -90,7 +84,7 @@ auth.get('/callback', async (c) => {
         email: payload.email,
         name: payload.name,
         picture: payload.picture,
-        externalAuthData: payload,
+        externalAuthData: payload as unknown as Record<string, unknown>,
       },
       tenant?._id.toString()
     );

@@ -1,8 +1,12 @@
-import { SignJWT, jwtVerify } from 'jose';
+import { SignJWT, jwtVerify, createRemoteJWKSet } from 'jose';
 import type { Context } from 'hono';
 import { config } from '../config';
 
 export type UserRole = 'super_admin' | 'admin';
+
+// JWKS - מפתח ציבורי מרוחק מ-auth-server
+const JWKS_URL = new URL(`${config.authMicroservice.url}/.well-known/jwks.json`);
+const jwks = createRemoteJWKSet(JWKS_URL);
 
 export interface InternalJWTPayload {
   userId: string;
@@ -60,7 +64,20 @@ export function getAuthCookie(c: Context): string | null {
   return match ? match[1] : null;
 }
 
-// Decode external JWT without verification (we trust the external service)
+// Verify external JWT with JWKS from auth-server
+export async function verifyExternalJWT(token: string): Promise<ExternalJWTPayload | null> {
+  try {
+    const { payload } = await jwtVerify(token, jwks, {
+      issuer: config.authMicroservice.url,
+    });
+    return payload as unknown as ExternalJWTPayload;
+  } catch (error) {
+    console.error('External JWT verification failed:', error);
+    return null;
+  }
+}
+
+// Decode external JWT without verification (fallback)
 export function decodeExternalJWT(token: string): ExternalJWTPayload | null {
   try {
     const parts = token.split('.');
