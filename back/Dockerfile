@@ -25,8 +25,8 @@ COPY --from=builder /app/tsconfig.json ./
 COPY --from=builder /app/src ./src
 
 # Create non-root user for security
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 bunjs && \
+RUN groupadd --system --gid 1001 nodejs && \
+    useradd --system --uid 1001 --gid nodejs bunjs && \
     chown -R bunjs:nodejs /app
 
 USER bunjs
