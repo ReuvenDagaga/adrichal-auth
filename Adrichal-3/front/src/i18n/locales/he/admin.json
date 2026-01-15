@@ -1,0 +1,118 @@
+{
+  "sidebar": {
+    "dashboard": "לוח בקרה",
+    "mediaLibrary": "ספריית מדיה",
+    "settings": "הגדרות",
+    "logout": "התנתק"
+  },
+  "dashboard": {
+    "title": "לוח בקרה",
+    "welcome": "ברוך הבא",
+    "stats": {
+      "totalImages": "סה\"כ תמונות",
+      "storageUsed": "אחסון בשימוש"
+    }
+  },
+  "media": {
+    "title": "ספריית מדיה",
+    "upload": "העלה תמונה",
+    "uploadMultiple": "העלה מספר תמונות",
+    "delete": "מחק",
+    "confirmDelete": "האם אתה בטוח שברצונך למחוק את התמונה?",
+    "copyUrl": "העתק קישור",
+    "urlCopied": "הקישור הועתק",
+    "filters": {
+      "all": "הכל",
+      "projects": "פרויקטים",
+      "blog": "בלוג",
+      "general": "כללי",
+      "gallery": "גלריה"
+    },
+    "noImages": "לא נמצאו תמונות",
+    "dropHere": "גרור תמונות לכאן",
+    "dragDrop": "גרור ושחרר או לחץ להעלאה",
+    "formats": "PNG, JPG, WebP עד 10MB",
+    "uploading": "מעלה...",
+    "success": "התמונה הועלתה בהצלחה",
+    "error": "העלאת התמונה נכשלה"
+  },
+  "imageEdit": {
+    "title": "עריכת תמונה",
+    "altText": "טקסט חלופי",
+    "altTextPlaceholder": "תאר את התמונה...",
+    "tags": "תגיות",
+    "tagsPlaceholder": "הוסף תגיות מופרדות בפסיק",
+    "save": "שמור",
+    "cancel": "ביטול"
+  },
+  "login": {
+    "title": "כניסת מנהל",
+    "subtitle": "התחבר כדי לגשת לפאנל הניהול",
+    "googleButton": "התחבר עם Google",
+    "errors": {
+      "noToken": "האימות נכשל. לא התקבל טוקן.",
+      "invalidToken": "טוקן אימות לא תקין.",
+      "tokenExpired": "פג תוקף החיבור. אנא התחבר מחדש.",
+      "authError": "אירעה שגיאה במהלך האימות.",
+      "unknown": "אירעה שגיאה לא ידועה."
+    }
+  },
+  "unauthorized": {
+    "title": "גישה נדחתה",
+    "message": "אין לך הרשאות לגשת לאזור זה.",
+    "backHome": "חזרה לדף הבית"
+  },
+  "superAdmin": {
+    "title": "סופר אדמין",
+    "tenants": {
+      "title": "לקוחות",
+      "create": "צור לקוח",
+      "edit": "ערוך לקוח",
+      "name": "שם",
+      "slug": "מזהה",
+      "domains": "דומיינים",
+      "primaryDomain": "דומיין ראשי",
+      "contactEmail": "אימייל ליצירת קשר",
+      "status": "סטטוס",
+      "active": "פעיל",
+      "inactive": "לא פעיל",
+      "actions": "פעולות",
+      "noTenants": "לא נמצאו לקוחות",
+      "created": "הלקוח נוצר בהצלחה",
+      "updated": "הלקוח עודכן בהצלחה",
+      "deleted": "הלקוח נמחק בהצלחה"
+    },
+    "users": {
+      "title": "משתמשים",
+      "email": "אימייל",
+      "name": "שם",
+      "role": "תפקיד",
+      "tenant": "לקוח",
+      "lastLogin": "כניסה אחרונה",
+      "actions": "פעולות",
+      "noUsers": "לא נמצאו משתמשים",
+      "roleUpdated": "תפקיד המשתמש עודכן",
+      "deleted": "המשתמש נמחק"
+    },
+    "stats": {
+      "totalTenants": "סה\"כ לקוחות",
+      "activeTenants": "לקוחות פעילים",
+      "totalUsers": "סה\"כ משתמשים",
+      "totalImages": "סה\"כ תמונות"
+    }
+  },
+  "common": {
+    "save": "שמור",
+    "cancel": "ביטול",
+    "edit": "ערוך",
+    "delete": "מחק",
+    "create": "צור",
+    "loading": "טוען...",
+    "noResults": "לא נמצאו תוצאות",
+    "search": "חיפוש...",
+    "confirm": "אישור",
+    "yes": "כן",
+    "no": "לא",
+    "back": "חזרה"
+  }
+}

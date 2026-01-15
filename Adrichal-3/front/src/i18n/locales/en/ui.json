@@ -1,0 +1,147 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "label": "Luxury Interior Design",
+    "title1": "Creating Spaces",
+    "title2": "That Inspire",
+    "description": "We design exceptional interiors that transform the way you live, blending timeless elegance with modern sophistication.",
+    "scroll": "Scroll",
+    "sideText1": "Interior Design Studio",
+    "sideText2": "Est. 2024 — Tel Aviv"
+  },
+  "services": {
+    "label": "What We Do",
+    "title": "Our Services",
+    "items": {
+      "interiorDesign": {
+        "title": "Interior Design",
+        "description": "Complete interior design solutions from concept to execution, creating spaces that reflect your unique style and vision."
+      },
+      "spacePlanning": {
+        "title": "Space Planning",
+        "description": "Strategic space optimization that maximizes functionality while maintaining aesthetic beauty and flow."
+      },
+      "furnitureDesign": {
+        "title": "Furniture Design",
+        "description": "Custom furniture pieces designed and crafted to perfectly complement your space and lifestyle."
+      },
+      "visualization": {
+        "title": "3D Visualization",
+        "description": "Photorealistic 3D renderings that bring your design vision to life before construction begins."
+      }
+    }
+  },
+  "about": {
+    "label": "About Us",
+    "title": "Crafting Timeless Spaces",
+    "description1": "At Adrichal Interior Design, we believe that exceptional design goes beyond aesthetics. It's about creating spaces that inspire, nurture, and evolve with you.",
+    "description2": "Our team of passionate designers combines innovative thinking with meticulous attention to detail, ensuring every project we undertake becomes a masterpiece of form and function.",
+    "stats": {
+      "projects": "Projects Completed",
+      "years": "Years Experience",
+      "satisfaction": "Client Satisfaction",
+      "awards": "Design Awards"
+    }
+  },
+  "projectsShowcase": {
+    "label": "Portfolio",
+    "title": "Featured Projects",
+    "viewAll": "View All Projects",
+    "hoverReveal": "Hover to reveal",
+    "featuredWork": "Featured Work"
+  },
+  "contact": {
+    "label": "Get in Touch",
+    "title": "Let's Create Something Beautiful",
+    "description": "Ready to transform your space? We'd love to hear about your project and discuss how we can bring your vision to life.",
+    "info": {
+      "email": "Email",
+      "phone": "Phone",
+      "studio": "Studio"
+    }
+  },
+  "projects": {
+    "label": "Our Work",
+    "title": "Projects",
+    "description": "Explore our portfolio of exceptional interior design projects, each crafted with passion and precision.",
+    "filters": {
+      "all": "All",
+      "residential": "Residential",
+      "commercial": "Commercial"
+    },
+    "viewProject": "View Project",
+    "backToProjects": "Back to Projects"
+  },
+  "blog": {
+    "label": "Insights & Inspiration",
+    "title": "Blog",
+    "description": "Explore the latest trends, tips, and insights in interior design. From color psychology to sustainable materials, we share our expertise.",
+    "featured": "Featured",
+    "loadMore": "Load More Articles",
+    "backToBlog": "Back to Blog",
+    "by": "By",
+    "minRead": "min read",
+    "categories": {
+      "all": "All",
+      "trends": "Trends",
+      "wellness": "Wellness",
+      "kitchen": "Kitchen",
+      "bathroom": "Bathroom",
+      "livingRoom": "Living Room",
+      "bedroom": "Bedroom",
+      "homeOffice": "Home Office",
+      "smallSpaces": "Small Spaces",
+      "outdoor": "Outdoor",
+      "lighting": "Lighting",
+      "sustainability": "Sustainability",
+      "designTheory": "Design Theory",
+      "artDecor": "Art & Decor",
+      "technology": "Technology",
+      "kidsRoom": "Kids Room",
+      "entry": "Entry"
+    }
+  },
+  "form": {
+    "labels": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "message": "Your Message"
+    },
+    "placeholders": {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": "+972 50 000 0000",
+      "message": "Tell us about your project..."
+    },
+    "messages": {
+      "success": "Thank you! Your message has been sent successfully.",
+      "error": "Sorry, there was an error. Please try again."
+    }
+  },
+  "buttons": {
+    "viewProjects": "View Projects",
+    "getInTouch": "Get in Touch",
+    "learnMore": "Learn More",
+    "sendMessage": "Send Message"
+  },
+  "footer": {
+    "tagline": "Creating exceptional spaces that inspire and transform the way you live.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "copyright": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use"
+  },
+  "misc": {
+    "loading": "Loading...",
+    "error": "Something went wrong"
+  }
+}

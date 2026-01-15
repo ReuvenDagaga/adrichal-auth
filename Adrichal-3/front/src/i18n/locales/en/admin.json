@@ -1,0 +1,118 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "mediaLibrary": "Media Library",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "title": "Admin Dashboard",
+    "welcome": "Welcome back",
+    "stats": {
+      "totalImages": "Total Images",
+      "storageUsed": "Storage Used"
+    }
+  },
+  "media": {
+    "title": "Media Library",
+    "upload": "Upload Image",
+    "uploadMultiple": "Upload Multiple",
+    "delete": "Delete",
+    "confirmDelete": "Are you sure you want to delete this image?",
+    "copyUrl": "Copy URL",
+    "urlCopied": "URL copied to clipboard",
+    "filters": {
+      "all": "All",
+      "projects": "Projects",
+      "blog": "Blog",
+      "general": "General",
+      "gallery": "Gallery"
+    },
+    "noImages": "No images found",
+    "dropHere": "Drop images here",
+    "dragDrop": "Drag & drop or click to upload",
+    "formats": "PNG, JPG, WebP up to 10MB",
+    "uploading": "Uploading...",
+    "success": "Image uploaded successfully",
+    "error": "Failed to upload image"
+  },
+  "imageEdit": {
+    "title": "Edit Image",
+    "altText": "Alt Text",
+    "altTextPlaceholder": "Describe the image...",
+    "tags": "Tags",
+    "tagsPlaceholder": "Add tags separated by comma",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "login": {
+    "title": "Admin Login",
+    "subtitle": "Sign in to access the admin panel",
+    "googleButton": "Sign in with Google",
+    "errors": {
+      "noToken": "Authentication failed. No token received.",
+      "invalidToken": "Invalid authentication token.",
+      "tokenExpired": "Your session has expired. Please sign in again.",
+      "authError": "An error occurred during authentication.",
+      "unknown": "An unknown error occurred."
+    }
+  },
+  "unauthorized": {
+    "title": "Access Denied",
+    "message": "You don't have permission to access this area.",
+    "backHome": "Back to Home"
+  },
+  "superAdmin": {
+    "title": "Super Admin",
+    "tenants": {
+      "title": "Tenants",
+      "create": "Create Tenant",
+      "edit": "Edit Tenant",
+      "name": "Name",
+      "slug": "Slug",
+      "domains": "Domains",
+      "primaryDomain": "Primary Domain",
+      "contactEmail": "Contact Email",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "actions": "Actions",
+      "noTenants": "No tenants found",
+      "created": "Tenant created successfully",
+      "updated": "Tenant updated successfully",
+      "deleted": "Tenant deleted successfully"
+    },
+    "users": {
+      "title": "Users",
+      "email": "Email",
+      "name": "Name",
+      "role": "Role",
+      "tenant": "Tenant",
+      "lastLogin": "Last Login",
+      "actions": "Actions",
+      "noUsers": "No users found",
+      "roleUpdated": "User role updated",
+      "deleted": "User deleted"
+    },
+    "stats": {
+      "totalTenants": "Total Tenants",
+      "activeTenants": "Active Tenants",
+      "totalUsers": "Total Users",
+      "totalImages": "Total Images"
+    }
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "create": "Create",
+    "loading": "Loading...",
+    "noResults": "No results found",
+    "search": "Search...",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back"
+  }
+}
