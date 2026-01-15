@@ -10,13 +10,18 @@ export default function SuperAdminDashboard() {
 
   const activeTenants = tenants?.filter((t) => t.isActive).length ?? 0;
 
+  const getRoleLabel = (role?: string) => {
+    if (!role) return '';
+    return t(`superAdmin.roles.${role}`, { defaultValue: role });
+  };
+
   return (
     <SuperAdminLayout>
       <div className="space-y-8">
         {/* Header */}
         <div>
           <h1 className="text-2xl font-semibold mb-2">{t('superAdmin.title')}</h1>
-          <p className="text-foreground-muted">System overview and management</p>
+          <p className="text-foreground-muted">{t('superAdmin.subtitle')}</p>
         </div>
 
         {/* Stats Grid */}
@@ -81,7 +86,7 @@ export default function SuperAdminDashboard() {
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="admin-card p-6">
-            <h2 className="text-lg font-medium mb-4">Recent Tenants</h2>
+            <h2 className="text-lg font-medium mb-4">{t('dashboard.recentTenants')}</h2>
             {tenants && tenants.length > 0 ? (
               <ul className="space-y-3">
                 {tenants.slice(0, 5).map((tenant) => (
@@ -115,7 +120,7 @@ export default function SuperAdminDashboard() {
           </div>
 
           <div className="admin-card p-6">
-            <h2 className="text-lg font-medium mb-4">Recent Users</h2>
+            <h2 className="text-lg font-medium mb-4">{t('dashboard.recentUsers')}</h2>
             {users && users.length > 0 ? (
               <ul className="space-y-3">
                 {users.slice(0, 5).map((user) => (
@@ -135,7 +140,7 @@ export default function SuperAdminDashboard() {
                       <div className="text-sm text-foreground-muted">{user.email}</div>
                     </div>
                     <span className="px-2 py-1 text-xs bg-gold/20 text-gold rounded">
-                      {user.role}
+                      {getRoleLabel(user.role)}
                     </span>
                   </li>
                 ))}

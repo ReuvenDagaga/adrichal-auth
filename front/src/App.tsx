@@ -22,6 +22,7 @@ import SuperAdminDashboard from './pages/super-admin/Dashboard';
 import SuperAdminTenants from './pages/super-admin/Tenants';
 import SuperAdminTenantForm from './pages/super-admin/TenantForm';
 import SuperAdminUsers from './pages/super-admin/Users';
+import SuperAdminSettings from './pages/super-admin/Settings';
 
 // Route Guards
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
@@ -87,6 +88,14 @@ function AppContent() {
           element={
             <SuperAdminRoute>
               <SuperAdminUsers />
+            </SuperAdminRoute>
+          }
+        />
+        <Route
+          path="/super-admin/settings"
+          element={
+            <SuperAdminRoute>
+              <SuperAdminSettings />
             </SuperAdminRoute>
           }
         />

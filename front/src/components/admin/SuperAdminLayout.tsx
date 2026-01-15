@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../contexts/AuthContext';
 import { LanguageSwitcher } from '../ui/LanguageSwitcher';
-import { FiHome, FiUsers, FiGrid, FiLogOut, FiArrowLeft } from 'react-icons/fi';
+import { FiHome, FiUsers, FiGrid, FiLogOut, FiArrowLeft, FiSettings } from 'react-icons/fi';
 import type { ReactNode } from 'react';
 
 interface SuperAdminLayoutProps {
@@ -18,7 +18,13 @@ export function SuperAdminLayout({ children }: SuperAdminLayoutProps) {
     { path: '/super-admin', label: t('sidebar.dashboard'), icon: FiHome },
     { path: '/super-admin/tenants', label: t('superAdmin.tenants.title'), icon: FiGrid },
     { path: '/super-admin/users', label: t('superAdmin.users.title'), icon: FiUsers },
+    { path: '/super-admin/settings', label: t('superAdmin.settings.title'), icon: FiSettings },
   ];
+
+  const getRoleLabel = (role?: string) => {
+    if (!role) return '';
+    return t(`superAdmin.roles.${role}`, { defaultValue: role });
+  };
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -42,7 +48,7 @@ export function SuperAdminLayout({ children }: SuperAdminLayoutProps) {
           className="flex items-center gap-2 text-sm text-foreground-muted hover:text-gold mb-6"
         >
           <FiArrowLeft className="w-4 h-4" />
-          Back to Admin
+          {t('sidebar.backToAdmin')}
         </Link>
 
         {/* User Info */}
@@ -56,7 +62,7 @@ export function SuperAdminLayout({ children }: SuperAdminLayoutProps) {
           )}
           <div>
             <div className="text-sm font-medium">{user?.name}</div>
-            <div className="text-xs text-gold">{user?.role}</div>
+            <div className="text-xs text-gold">{getRoleLabel(user?.role)}</div>
           </div>
         </div>
 

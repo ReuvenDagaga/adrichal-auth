@@ -15,12 +15,12 @@ export default function SuperAdminTenants() {
       refetch();
     },
     onError: () => {
-      toast.error('Failed to delete tenant');
+      toast.error(t('superAdmin.tenants.errors.deleteFailed'));
     },
   });
 
   const handleDelete = (id: string, name: string) => {
-    if (confirm(`Are you sure you want to delete "${name}"?`)) {
+    if (confirm(t('superAdmin.tenants.confirmDelete', { name }))) {
       deleteMutation.mutate({ id });
     }
   };
@@ -34,7 +34,7 @@ export default function SuperAdminTenants() {
             <h1 className="text-2xl font-semibold mb-2">
               {t('superAdmin.tenants.title')}
             </h1>
-            <p className="text-foreground-muted">Manage all tenants in the system</p>
+            <p className="text-foreground-muted">{t('superAdmin.tenants.subtitle')}</p>
           </div>
           <Link to="/super-admin/tenants/new" className="btn-primary flex items-center gap-2">
             <FiPlus className="w-4 h-4" />
