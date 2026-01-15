@@ -31,7 +31,6 @@ import { SuperAdminRoute } from './components/auth/SuperAdminRoute';
 // Layout
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import Cursor from './components/ui/Cursor';
 import WhatsAppButton from './components/ui/WhatsAppButton';
 import PageTransition from './components/ui/PageTransition';
 
@@ -132,7 +131,6 @@ function AppContent() {
   // Public routes with full design
   return (
     <>
-      <Cursor />
       <Navbar />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
