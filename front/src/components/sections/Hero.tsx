@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import HeroScene from '../3d/HeroScene'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import {
   Section,
@@ -20,19 +19,15 @@ export default function Hero() {
 
   return (
     <Section padding="none" className="h-screen">
-      {/* 3D Background for desktop, static image for mobile */}
-      {isMobile ? (
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
-            alt="Interior Design"
-            className="w-full h-full object-cover brightness-75"
-          />
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
-      ) : (
-        <HeroScene />
-      )}
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
+          alt="Interior Design"
+          className="w-full h-full object-cover brightness-75"
+        />
+        <div className="absolute inset-0 bg-black/30" />
+      </div>
 
       {/* Content Overlay */}
       <div className="absolute inset-y-0 ltr:left-0 rtl:right-0 z-10 pointer-events-none w-full lg:w-3/5 xl:w-1/2">

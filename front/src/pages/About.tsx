@@ -1,88 +1,6 @@
-import { useRef, useState, Suspense } from 'react'
+import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, Environment } from '@react-three/drei'
-import * as THREE from 'three'
-
-interface FloatingShapesProps {
-  mousePosition: { x: number; y: number }
-}
-
-function FloatingShapes({ mousePosition }: FloatingShapesProps) {
-  const meshRef1 = useRef<THREE.Mesh>(null)
-  const meshRef2 = useRef<THREE.Mesh>(null)
-  const meshRef3 = useRef<THREE.Mesh>(null)
-  const meshRef4 = useRef<THREE.Mesh>(null)
-
-  useFrame(() => {
-    if (meshRef1.current) {
-      meshRef1.current.rotation.x += 0.005
-      meshRef1.current.rotation.y += 0.005
-      meshRef1.current.position.x = -5 + mousePosition.x * 0.5
-      meshRef1.current.position.y = 1.5 + mousePosition.y * 0.5
-    }
-    if (meshRef2.current) {
-      meshRef2.current.rotation.x += 0.003
-      meshRef2.current.rotation.y += 0.007
-      meshRef2.current.position.x = 5 - mousePosition.x * 0.3
-      meshRef2.current.position.y = -1.5 - mousePosition.y * 0.3
-    }
-    if (meshRef3.current) {
-      meshRef3.current.rotation.x += 0.004
-      meshRef3.current.rotation.z += 0.006
-      meshRef3.current.position.x = -4.5 + mousePosition.x * 0.2
-      meshRef3.current.position.y = -2 + mousePosition.y * 0.2
-    }
-    if (meshRef4.current) {
-      meshRef4.current.rotation.y += 0.006
-      meshRef4.current.rotation.z += 0.004
-      meshRef4.current.position.x = 4.5 - mousePosition.x * 0.4
-      meshRef4.current.position.y = 2 - mousePosition.y * 0.4
-    }
-  })
-
-  return (
-    <>
-      {/* Left top - white icosahedron */}
-      <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
-        <mesh ref={meshRef1} position={[-5, 1.5, -2]}>
-          <icosahedronGeometry args={[0.9, 0]} />
-          <meshPhysicalMaterial
-            color="#ffffff"
-            metalness={0.1}
-            roughness={0.1}
-            transparent
-            opacity={0.4}
-          />
-        </mesh>
-      </Float>
-
-      {/* Right bottom - gold octahedron */}
-      <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.8}>
-        <mesh ref={meshRef2} position={[5, -1.5, -1]}>
-          <octahedronGeometry args={[0.7, 0]} />
-          <meshStandardMaterial color="#d4af37" metalness={0.9} roughness={0.1} />
-        </mesh>
-      </Float>
-
-      {/* Left bottom - dark torus knot */}
-      <Float speed={2.5} rotationIntensity={0.4} floatIntensity={0.6}>
-        <mesh ref={meshRef3} position={[-4.5, -2, -1.5]}>
-          <torusKnotGeometry args={[0.35, 0.12, 64, 16]} />
-          <meshStandardMaterial color="#1a1a1a" metalness={0.8} roughness={0.2} />
-        </mesh>
-      </Float>
-
-      {/* Right top - gold ring/torus */}
-      <Float speed={1.8} rotationIntensity={0.6} floatIntensity={0.4}>
-        <mesh ref={meshRef4} position={[4.5, 2, -1]}>
-          <torusGeometry args={[0.5, 0.15, 16, 32]} />
-          <meshStandardMaterial color="#d4af37" metalness={0.95} roughness={0.05} />
-        </mesh>
-      </Float>
-    </>
-  )
-}
+import { useTranslation } from 'react-i18next'
 
 const team = [
   {
@@ -135,24 +53,11 @@ const values = [
 ]
 
 export default function About() {
+  const { t } = useTranslation('ui')
   const heroRef = useRef<HTMLDivElement>(null)
   const isHeroInView = useInView(heroRef, { once: true })
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], [0, -100])
-
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isMouseNearCenter, setIsMouseNearCenter] = useState(false)
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2
-    setMousePosition({ x, y })
-
-    // Check if mouse is near center (within 30% of center)
-    const distanceFromCenter = Math.sqrt(x * x + y * y)
-    setIsMouseNearCenter(distanceFromCenter < 0.6)
-  }
 
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
@@ -160,30 +65,15 @@ export default function About() {
       <div
         ref={heroRef}
         className="relative h-screen overflow-hidden"
-        onMouseMove={handleMouseMove}
       >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src="/team.png"
             alt="Team"
-            className={`w-full h-full object-cover transition-all duration-700 ${
-              isMouseNearCenter ? 'grayscale-0 opacity-70 brightness-110' : 'grayscale opacity-50 brightness-90'
-            }`}
+            className="w-full h-full object-cover grayscale opacity-50 brightness-90"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#0a0a0a]" />
-        </div>
-
-        {/* 3D Elements */}
-        <div className="absolute inset-0 z-[1] opacity-60">
-          <Suspense fallback={null}>
-            <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-              <ambientLight intensity={0.3} />
-              <directionalLight position={[5, 5, 5]} intensity={0.5} />
-              <FloatingShapes mousePosition={mousePosition} />
-              <Environment preset="city" />
-            </Canvas>
-          </Suspense>
         </div>
 
         <div className="relative z-10 h-full flex items-end pb-32">
@@ -194,15 +84,14 @@ export default function About() {
               transition={{ duration: 1 }}
               className="max-w-3xl"
             >
-              <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">About Us</p>
+              <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">{t('about.label')}</p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-white mb-8">
-                We Create Spaces
+                {t('about.weCreateSpaces')}
                 <br />
-                <span className="italic font-extralight">That Tell Stories</span>
+                <span className="italic font-extralight">{t('about.thatTellStories')}</span>
               </h1>
               <p className="text-gray-400 text-xl leading-relaxed">
-                Founded with a passion for transforming spaces, Adrichal Interior Design
-                has become synonymous with luxury, innovation, and timeless elegance.
+                {t('about.heroDescription')}
               </p>
             </motion.div>
           </div>
@@ -220,11 +109,12 @@ export default function About() {
             transition={{ duration: 1.5, repeat: Infinity }}
             className="flex flex-col items-center gap-3"
           >
-            <span className="text-white/50 text-xs tracking-[0.3em] uppercase">Scroll</span>
+            <span className="text-white/50 text-xs tracking-[0.3em] uppercase">{t('hero.scroll')}</span>
             <div className="w-[1px] h-12 bg-gradient-to-b from-white/50 to-transparent" />
           </motion.div>
         </motion.div>
       </div>
+
       {/* Story Section */}
       <section className="py-28 md:py-36 lg:py-44 relative overflow-hidden">
         {/* Ambient lighting */}
@@ -244,11 +134,11 @@ export default function About() {
             </motion.div>
 
             <div>
-              <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">Our Story</p>
+              <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">{t('about.ourStory')}</p>
               <h2 className="text-4xl md:text-5xl font-light text-white mb-8">
-                A Decade of
+                {t('about.aDecadeOf')}
                 <br />
-                <span className="italic font-extralight">Design Excellence</span>
+                <span className="italic font-extralight">{t('about.designExcellence')}</span>
               </h2>
               <div className="space-y-6 text-gray-400 leading-relaxed">
                 <p>
@@ -280,9 +170,9 @@ export default function About() {
 
         <div className="container mx-auto px-8 md:px-12 lg:px-20 xl:px-28 relative z-10">
           <div className="text-center mb-20">
-            <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">Our Values</p>
+            <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">{t('about.ourValues')}</p>
             <h2 className="text-4xl md:text-5xl font-light text-white">
-              What Drives Us
+              {t('about.whatDrivesUs')}
             </h2>
           </div>
 
@@ -315,9 +205,9 @@ export default function About() {
 
         <div className="container mx-auto px-8 md:px-12 lg:px-20 xl:px-28 relative z-10">
           <div className="text-center mb-20">
-            <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">Our Team</p>
+            <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">{t('about.ourTeam')}</p>
             <h2 className="text-4xl md:text-5xl font-light text-white">
-              Meet the Experts
+              {t('about.meetTheExperts')}
             </h2>
           </div>
 
