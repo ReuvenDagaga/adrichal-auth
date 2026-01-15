@@ -20,6 +20,7 @@ export const config = {
   },
   authMicroservice: {
     url: env.get('AUTH_MICROSERVICE_URL').required().asString(),
+    clientId: env.get('AUTH_CLIENT_ID').default('adrichal-auth').asString(),
   },
   frontendUrl: env.get('FRONTEND_URL').default('http://localhost:5173').asString(),
   backendUrl: env.get('BACKEND_URL').default('http://localhost:3000').asString(),

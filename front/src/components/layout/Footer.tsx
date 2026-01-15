@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { FaInstagram, FaPinterest, FaFacebookF } from 'react-icons/fa'
 import {
   Container,
@@ -16,14 +17,16 @@ const socialLinks = [
   { name: 'Facebook', url: 'https://facebook.com', icon: FaFacebookF },
 ]
 
-const quickLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'About', path: '/about' },
-  { name: 'Contact', path: '/contact' },
-]
-
 export default function Footer() {
+  const { t } = useTranslation()
+
+  const quickLinks = [
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.projects'), path: '/projects' },
+    { name: t('nav.about'), path: '/about' },
+    { name: t('nav.contact'), path: '/contact' },
+  ]
+
   return (
     <footer className="bg-background-elevated border-t border-border relative overflow-hidden">
       {/* Ambient lighting */}
@@ -42,13 +45,13 @@ export default function Footer() {
               </Label>
             </Link>
             <Text size="sm" color="muted" className="max-w-xs">
-              Creating exceptional spaces that inspire and transform the way you live.
+              {t('footer.tagline')}
             </Text>
           </div>
 
           {/* Quick Links */}
           <div>
-            <Label color="accent" className="block mb-6">Navigation</Label>
+            <Label color="accent" className="block mb-6">{t('footer.navigation')}</Label>
             <Stack gap="sm">
               {quickLinks.map((link) => (
                 <Link
@@ -64,7 +67,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <Label color="accent" className="block mb-6">Contact</Label>
+            <Label color="accent" className="block mb-6">{t('footer.contact')}</Label>
             <Stack gap="sm">
               <a
                 href="tel:0532813811"
@@ -79,14 +82,14 @@ export default function Footer() {
                 theoffice.ad.studio@gmail.com
               </a>
               <Text size="sm" color="muted">
-                Tel Aviv, Israel
+                {t('contact.info.studio')}: תל אביב
               </Text>
             </Stack>
           </div>
 
           {/* Social */}
           <div>
-            <Label color="accent" className="block mb-6">Follow Us</Label>
+            <Label color="accent" className="block mb-6">{t('footer.followUs')}</Label>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <motion.a
@@ -107,20 +110,20 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <Text size="xs" color="subtle" className="tracking-wider">
-            © {new Date().getFullYear()} ADRICHAL. All rights reserved.
+            © {new Date().getFullYear()} ADRICHAL. {t('footer.copyright')}
           </Text>
-          <div className="flex gap-6">
+          <div className="flex gap-6 rtl:flex-row-reverse">
             <Link
               to="/privacy"
               className="text-foreground-subtle text-xs hover:text-foreground transition-colors duration-300"
             >
-              Privacy Policy
+              {t('footer.privacyPolicy')}
             </Link>
             <Link
               to="/terms"
               className="text-foreground-subtle text-xs hover:text-foreground transition-colors duration-300"
             >
-              Terms of Use
+              {t('footer.termsOfUse')}
             </Link>
           </div>
         </div>

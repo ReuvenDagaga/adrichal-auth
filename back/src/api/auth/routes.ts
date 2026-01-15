@@ -22,37 +22,62 @@ auth.get('/google', async (c) => {
   const tenant = c.get('tenant');
   const domain = tenantDomain || tenant?.primaryDomain || '';
 
-  // Build our callback URL
-  const callbackUrl = encodeURIComponent(
-    `${config.backendUrl}/api/auth/callback?tenant_domain=${domain}`
-  );
+  // Build our callback URL (this is where auth-server will redirect back to)
+  const redirectUri = `${config.backendUrl}/api/auth/callback`;
 
-  // Redirect to external auth microservice
-  const authUrl = `${config.authMicroservice.url}/auth/google?callback=${callbackUrl}`;
+  // Build auth URL with required parameters
+  const authUrl = new URL(`${config.authMicroservice.url}/auth/google`);
+  authUrl.searchParams.set('client_id', config.authMicroservice.clientId);
+  authUrl.searchParams.set('redirect_uri', redirectUri);
+  authUrl.searchParams.set('state', domain); // Pass tenant domain in state
 
-  logger.info({ authUrl, tenantDomain: domain }, 'Redirecting to external auth');
+  logger.info({ authUrl: authUrl.toString(), tenantDomain: domain }, 'Redirecting to external auth');
 
-  return c.redirect(authUrl);
+  return c.redirect(authUrl.toString());
 });
 
 /**
  * Callback from external microservice
  */
 auth.get('/callback', async (c) => {
-  const externalToken = c.req.query('token');
-  const tenantDomain = c.req.query('tenant_domain') || '';
+  const authCode = c.req.query('code');
+  // auth-server returns state parameter, fallback to tenant_domain for backwards compatibility
+  const tenantDomain = c.req.query('state') || c.req.query('tenant_domain') || '';
 
-  // Determine redirect base URL
-  const redirectBase = tenantDomain
-    ? `https://${tenantDomain}`
-    : config.frontendUrl;
+  // Determine redirect base URL - use frontendUrl for local dev, tenant domain for production
+  const redirectBase = config.frontendUrl;
 
-  if (!externalToken) {
-    logger.warn('No token received from external auth');
-    return c.redirect(`${redirectBase}/admin/login?error=no_token`);
+  logger.info({ tenantDomain, redirectBase, frontendUrl: config.frontendUrl }, 'Callback redirect info');
+
+  if (!authCode) {
+    logger.warn('No auth code received from external auth');
+    return c.redirect(`${redirectBase}/admin/login?error=no_code`);
   }
 
   try {
+    // Exchange auth code for tokens
+    const tokenResponse = await fetch(`${config.authMicroservice.url}/token`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        grant_type: 'authorization_code',
+        code: authCode,
+        redirect_uri: `${config.backendUrl}/api/auth/callback`,
+        client_id: config.authMicroservice.clientId,
+      }),
+    });
+
+    if (!tokenResponse.ok) {
+      const errorData = await tokenResponse.json();
+      logger.error({ error: errorData }, 'Token exchange failed');
+      return c.redirect(`${redirectBase}/admin/login?error=token_exchange_failed`);
+    }
+
+    const tokens = await tokenResponse.json() as { access_token: string; id_token?: string };
+    const externalToken = tokens.id_token || tokens.access_token;
+
     // Verify the JWT from external service using JWKS
     const payload = await verifyExternalJWT(externalToken);
 
