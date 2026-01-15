@@ -55,7 +55,7 @@ export default function AdminLogin() {
           href="/"
           className="block mt-6 text-sm text-foreground-muted hover:text-gold transition-colors"
         >
-          ← Back to site
+          {t('login.backToSite')}
         </a>
       </div>
     </div>

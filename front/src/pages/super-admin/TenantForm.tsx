@@ -209,7 +209,7 @@ export default function TenantForm() {
           {/* Quick Setup (only for new tenants) */}
           {!isEdit && (
             <div className="admin-card p-6 space-y-4">
-              <h2 className="text-lg font-medium mb-4">Quick Setup</h2>
+              <h2 className="text-lg font-medium mb-4">{t('superAdmin.tenants.quickSetup')}</h2>
 
               {/* Admin Email */}
               <div>

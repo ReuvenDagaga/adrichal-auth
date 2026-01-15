@@ -23,11 +23,11 @@ export default function MediaLibrary() {
 
   const deleteMutation = trpc.upload.deleteImage.useMutation({
     onSuccess: () => {
-      toast.success('Image deleted');
+      toast.success(t('media.imageDeleted'));
       refetch();
     },
     onError: () => {
-      toast.error('Failed to delete image');
+      toast.error(t('media.deleteFailed'));
     },
   });
 
@@ -69,7 +69,7 @@ export default function MediaLibrary() {
         {/* Upload Section */}
         <div className="admin-card p-6">
           <div className="flex gap-4 mb-4">
-            <label className="text-sm text-foreground-muted">Upload to folder:</label>
+            <label className="text-sm text-foreground-muted">{t('media.uploadToFolder')}</label>
             <select
               value={uploadFolder}
               onChange={(e) => setUploadFolder(e.target.value as Folder)}
@@ -158,7 +158,7 @@ export default function MediaLibrary() {
         {/* Total Count */}
         {data && data.total > 0 && (
           <div className="text-sm text-foreground-muted text-center">
-            Showing {data.items.length} of {data.total} images
+            {t('media.showingImages', { shown: data.items.length, total: data.total })}
           </div>
         )}
       </div>

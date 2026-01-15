@@ -15,7 +15,8 @@
       "storageUsed": "אחסון בשימוש"
     },
     "recentTenants": "לקוחות אחרונים",
-    "recentUsers": "משתמשים אחרונים"
+    "recentUsers": "משתמשים אחרונים",
+    "quickActions": "פעולות מהירות"
   },
   "media": {
     "title": "ספריית מדיה",
@@ -38,7 +39,14 @@
     "formats": "PNG, JPG, WebP עד 10MB",
     "uploading": "מעלה...",
     "success": "התמונה הועלתה בהצלחה",
-    "error": "העלאת התמונה נכשלה"
+    "error": "העלאת התמונה נכשלה",
+    "fileTooLarge": "הקובץ גדול מדי (מקסימום 10MB)",
+    "imagesUploaded": "{{count}} תמונות הועלו בהצלחה",
+    "uploadImages": "העלה {{count}} תמונות",
+    "imageDeleted": "התמונה נמחקה",
+    "deleteFailed": "מחיקת התמונה נכשלה",
+    "uploadToFolder": "העלה לתיקייה:",
+    "showingImages": "מציג {{shown}} מתוך {{total}} תמונות"
   },
   "imageEdit": {
     "title": "עריכת תמונה",
@@ -53,6 +61,7 @@
     "title": "כניסת מנהל",
     "subtitle": "התחבר כדי לגשת לפאנל הניהול",
     "googleButton": "התחבר עם Google",
+    "backToSite": "← חזרה לאתר",
     "errors": {
       "noToken": "האימות נכשל. לא התקבל טוקן.",
       "invalidToken": "טוקן אימות לא תקין.",
@@ -94,6 +103,7 @@
       "adminEmail": "אימייל אדמין",
       "adminEmailPlaceholder": "admin@example.com",
       "adminEmailHint": "הזן אימייל ליצירת נתוני לקוח אוטומטית",
+      "quickSetup": "הגדרה מהירה",
       "advancedOptions": "אפשרויות מתקדמות",
       "hideAdvanced": "הסתר מתקדם",
       "status": "סטטוס",
@@ -151,6 +161,7 @@
       "platformName": "שם הפלטפורמה",
       "version": "גרסה",
       "environment": "סביבה",
+      "production": "ייצור",
       "apiUrl": "כתובת API",
       "overview": "סקירת פלטפורמה",
       "totalTenants": "סה\"כ לקוחות",

@@ -22,7 +22,7 @@ export function MultiImageUpload({ folder, onSuccess }: MultiImageUploadProps) {
 
   const uploadMutation = trpc.upload.uploadMultiple.useMutation({
     onSuccess: () => {
-      toast.success(`${files.length} images uploaded successfully`);
+      toast.success(t('media.imagesUploaded', { count: files.length }));
       setFiles([]);
       onSuccess?.();
     },
@@ -118,7 +118,7 @@ export function MultiImageUpload({ folder, onSuccess }: MultiImageUploadProps) {
           >
             {uploading
               ? t('media.uploading')
-              : `Upload ${files.length} image${files.length > 1 ? 's' : ''}`}
+              : t('media.uploadImages', { count: files.length })}
           </button>
         </>
       )}

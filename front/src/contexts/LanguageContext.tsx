@@ -21,7 +21,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const value: LanguageContextValue = {
     language: i18n.language,
-    isRTL: i18n.language === 'he',
+    isRTL: i18n.language?.startsWith('he') ?? false,
     changeLanguage,
   };
 

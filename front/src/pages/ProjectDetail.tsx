@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Suspense } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import { projects } from '../data/projects'
@@ -24,6 +25,7 @@ function useIsMobile() {
 }
 
 export default function ProjectDetail() {
+  const { t } = useTranslation('ui')
   const { id } = useParams()
   const project = projects.find(p => p.id === id)
   const [showRoom, setShowRoom] = useState(false)
@@ -63,7 +65,7 @@ export default function ProjectDetail() {
           className="absolute top-32 left-8 lg:left-20 flex items-center gap-3 text-white/60 hover:text-gold transition-colors duration-300"
         >
           <span>←</span>
-          <span className="text-sm tracking-[0.2em] uppercase">Back to Projects</span>
+          <span className="text-sm tracking-[0.2em] uppercase">{t('projects.backToProjects')}</span>
         </Link>
       </div>
 
@@ -85,15 +87,15 @@ export default function ProjectDetail() {
           {/* Meta */}
           <div className="flex flex-wrap gap-8 mb-12 text-gray-400">
             <div>
-              <p className="text-xs tracking-wider uppercase text-white/40 mb-1">Location</p>
+              <p className="text-xs tracking-wider uppercase text-white/40 mb-1">{t('projects.location')}</p>
               <p>{project.location}</p>
             </div>
             <div>
-              <p className="text-xs tracking-wider uppercase text-white/40 mb-1">Year</p>
+              <p className="text-xs tracking-wider uppercase text-white/40 mb-1">{t('projects.year')}</p>
               <p>{project.year}</p>
             </div>
             <div>
-              <p className="text-xs tracking-wider uppercase text-white/40 mb-1">Area</p>
+              <p className="text-xs tracking-wider uppercase text-white/40 mb-1">{t('projects.area')}</p>
               <p>{project.area}</p>
             </div>
           </div>
@@ -134,9 +136,9 @@ export default function ProjectDetail() {
           >
             <div className="flex items-center justify-between mb-8">
               <div>
-                <p className="text-gold text-sm tracking-[0.4em] uppercase mb-2">Interactive Experience</p>
+                <p className="text-gold text-sm tracking-[0.4em] uppercase mb-2">{t('projects.interactiveExperience')}</p>
                 <h3 className="text-3xl md:text-4xl font-light text-white">
-                  Explore in <span className="italic font-extralight">3D</span>
+                  {t('projects.explore3d')} <span className="italic font-extralight">{t('projects.3d')}</span>
                 </h3>
               </div>
               <motion.button
@@ -145,7 +147,7 @@ export default function ProjectDetail() {
                 whileTap={{ scale: 0.98 }}
                 className="px-8 py-4 border border-gold/50 text-gold text-sm tracking-[0.2em] uppercase hover:bg-gold hover:text-black transition-all duration-300"
               >
-                {showRoom ? 'Hide 3D View' : 'View Room'}
+                {showRoom ? t('projects.hide3dView') : t('projects.viewRoom')}
               </motion.button>
             </div>
 
@@ -164,7 +166,7 @@ export default function ProjectDetail() {
 
                   <Suspense fallback={
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-gold text-sm tracking-[0.3em] uppercase">Loading 3D Scene...</div>
+                      <div className="text-gold text-sm tracking-[0.3em] uppercase">{t('projects.loading3d')}</div>
                     </div>
                   }>
                     <Canvas
@@ -194,9 +196,9 @@ export default function ProjectDetail() {
 
                   {/* Instructions overlay */}
                   <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 text-white/40 text-xs tracking-wider">
-                    <span>Drag to rotate</span>
+                    <span>{t('projects.dragToRotate')}</span>
                     <span className="w-[1px] h-4 bg-white/20" />
-                    <span>Scroll to zoom</span>
+                    <span>{t('projects.scrollToZoom')}</span>
                   </div>
 
                   {/* Gold border accent */}
@@ -216,7 +218,7 @@ export default function ProjectDetail() {
             >
               <span className="text-white/40 group-hover:text-gold transition-colors duration-300">←</span>
               <div>
-                <p className="text-xs tracking-wider uppercase text-white/40 mb-1">Previous</p>
+                <p className="text-xs tracking-wider uppercase text-white/40 mb-1">{t('projects.previous')}</p>
                 <p className="text-white group-hover:text-gold transition-colors duration-300">
                   {prevProject.title}
                 </p>
@@ -228,7 +230,7 @@ export default function ProjectDetail() {
               className="group flex items-center gap-4 text-right"
             >
               <div>
-                <p className="text-xs tracking-wider uppercase text-white/40 mb-1">Next</p>
+                <p className="text-xs tracking-wider uppercase text-white/40 mb-1">{t('projects.next')}</p>
                 <p className="text-white group-hover:text-gold transition-colors duration-300">
                   {nextProject.title}
                 </p>

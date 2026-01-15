@@ -70,7 +70,7 @@ export default function SuperAdminSettings() {
                   {t('superAdmin.settings.environment')}
                 </span>
                 <span className="px-2 py-1 text-xs bg-green-500/20 text-green-400 rounded">
-                  Production
+                  {t('superAdmin.settings.production')}
                 </span>
               </div>
               <div className="flex justify-between py-2">

@@ -1,6 +1,7 @@
 import { useState, useRef, Suspense, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useGLTF, Environment } from '@react-three/drei'
 import * as THREE from 'three'
@@ -86,6 +87,7 @@ function LampScene() {
 const LIVING_ROOM_BG = 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop'
 
 export default function ProjectsShowcase() {
+  const { t } = useTranslation('ui')
   const isMobile = useIsMobile()
   const [, setHoveredProject] = useState<string | null>(null)
   const [isLampHovered, setIsLampHovered] = useState(false)
@@ -143,12 +145,12 @@ export default function ProjectsShowcase() {
               transition={{ duration: 0.8 }}
               className="mb-12"
             >
-              <Label color="accent" className="mb-4 block">Portfolio</Label>
+              <Label color="accent" className="mb-4 block">{t('projectsShowcase.label')}</Label>
               <Heading level={2} size="heading-1">
-                Featured
+                {t('projectsShowcase.title1')}
               </Heading>
               <Heading level={2} size="heading-1" className="italic font-extralight">
-                Projects
+                {t('projectsShowcase.title2')}
               </Heading>
             </motion.div>
 
@@ -203,7 +205,7 @@ export default function ProjectsShowcase() {
                 to="/projects"
                 className="group inline-flex items-center gap-4 text-foreground-subtle hover:text-gold transition-colors duration-500"
               >
-                <Text size="xs" className="tracking-widest uppercase">View All Projects</Text>
+                <Text size="xs" className="tracking-widest uppercase">{t('projectsShowcase.viewAll')}</Text>
                 <motion.span
                   className="inline-block text-lg"
                   animate={{ x: [0, 5, 0] }}
@@ -233,7 +235,7 @@ export default function ProjectsShowcase() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <Text size="sm" color="accent" className="tracking-[0.3em] uppercase">
-                    Featured Work
+                    {t('projectsShowcase.featuredWork')}
                   </Text>
                 </div>
               </motion.div>
@@ -277,7 +279,7 @@ export default function ProjectsShowcase() {
                     </div>
                   </div>
                   <Text size="xs" color="subtle" className="tracking-[0.2em] uppercase text-[10px] lg:text-xs">
-                    Hover to reveal
+                    {t('projectsShowcase.hoverReveal')}
                   </Text>
                 </motion.div>
               </motion.div>

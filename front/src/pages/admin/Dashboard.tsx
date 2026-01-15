@@ -63,7 +63,7 @@ export default function AdminDashboard() {
 
         {/* Quick Actions */}
         <div className="admin-card p-6">
-          <h2 className="text-lg font-medium mb-4">Quick Actions</h2>
+          <h2 className="text-lg font-medium mb-4">{t('dashboard.quickActions')}</h2>
           <div className="flex gap-4">
             <a href="/admin/media" className="btn-primary">
               {t('media.upload')}

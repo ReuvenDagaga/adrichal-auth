@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import {
   Section,
@@ -14,13 +15,6 @@ import {
   StaggerContainer,
   StaggerItem,
 } from '../../design-system'
-
-const stats = [
-  { number: '150+', label: 'Projects Completed' },
-  { number: '12', label: 'Years Experience' },
-  { number: '98%', label: 'Client Satisfaction' },
-  { number: '25+', label: 'Design Awards' },
-]
 
 // Pillow data - positions on the sofa
 const PILLOWS = [
@@ -117,9 +111,17 @@ function FallingPillow({
 const SOFA_BG = 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1920&q=80'
 
 export default function About() {
+  const { t } = useTranslation('ui')
   const isMobile = useIsMobile()
   const sectionRef = useRef<HTMLDivElement>(null)
   const { ref, isInView } = useScrollReveal()
+
+  const stats = [
+    { number: '150+', label: t('about.stats.projects') },
+    { number: '12', label: t('about.stats.years') },
+    { number: '98%', label: t('about.stats.satisfaction') },
+    { number: '25+', label: t('about.stats.awards') },
+  ]
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -186,7 +188,7 @@ export default function About() {
                   className="absolute -right-4 md:-right-8 bottom-12 bg-gold text-dark-900 p-6 md:p-8"
                 >
                   <p className="text-4xl md:text-5xl font-light">12+</p>
-                  <p className="text-xs tracking-wider uppercase mt-1">Years</p>
+                  <p className="text-xs tracking-wider uppercase mt-1">{t('about.yearsLabel')}</p>
                 </motion.div>
               </div>
             </motion.div>
@@ -202,7 +204,7 @@ export default function About() {
                   animate={isInView ? { opacity: 1 } : {}}
                   transition={{ duration: 0.8 }}
                 >
-                  <Label color="accent">About Us</Label>
+                  <Label color="accent">{t('about.label')}</Label>
                 </motion.div>
 
                 <motion.div
@@ -211,10 +213,10 @@ export default function About() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
                   <Heading level={2} size="heading-1">
-                    Crafting
+                    {t('about.title1')}
                   </Heading>
                   <Heading level={2} size="heading-1" className="italic font-extralight">
-                    Timeless Spaces
+                    {t('about.title2')}
                   </Heading>
                 </motion.div>
 
@@ -224,9 +226,7 @@ export default function About() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
                   <Text size="lg" color="muted">
-                    At Adrichal Interior Design, we believe that exceptional design goes beyond
-                    aesthetics. We create spaces that tell stories, evoke emotions, and enhance
-                    the quality of everyday life.
+                    {t('about.description1')}
                   </Text>
                 </motion.div>
 
@@ -236,8 +236,7 @@ export default function About() {
                   transition={{ duration: 0.8, delay: 0.5 }}
                 >
                   <Text size="lg" color="muted">
-                    Our approach combines innovative design thinking with meticulous attention
-                    to detail, resulting in interiors that are both beautiful and functional.
+                    {t('about.description2')}
                   </Text>
                 </motion.div>
 
@@ -247,7 +246,7 @@ export default function About() {
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
                   <Button variant="ghost" to="/about" className="group inline-flex items-center gap-4 px-0">
-                    <span>Learn More</span>
+                    <span>{t('buttons.learnMore')}</span>
                     <motion.span
                       className="w-12 h-[1px] bg-foreground group-hover:bg-gold group-hover:w-20 transition-all duration-300"
                     />

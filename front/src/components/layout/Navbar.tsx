@@ -44,9 +44,9 @@ export default function Navbar({ logoSrc = '/logo.png' }: NavbarProps) {
           WebkitBackdropFilter: isScrolled ? 'blur(24px) saturate(150%)' : 'blur(16px) saturate(150%)',
         }}
       >
-        <div className="flex items-center justify-between h-20 px-4 lg:px-16">
-          {/* Logo - Left */}
-          <Link to="/" className="flex-shrink-0 mr-auto lg:mr-0">
+        <div className="flex items-center justify-between h-20 px-4 lg:px-16 flex-row-reverse">
+          {/* Logo */}
+          <Link to="/" className="flex-shrink-0">
             <img
               src={logoSrc}
               alt="Logo"
@@ -54,8 +54,8 @@ export default function Navbar({ logoSrc = '/logo.png' }: NavbarProps) {
             />
           </Link>
 
-          {/* Navigation Links - Right */}
-          <nav className="hidden lg:flex items-center gap-8">
+          {/* Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-8" dir="ltr">
             {navLinks.map((link) => (
               <Link
                 key={link.path}

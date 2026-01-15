@@ -17,7 +17,8 @@
   },
   "services": {
     "label": "What We Do",
-    "title": "Our Services",
+    "title1": "Our",
+    "title2": "Services",
     "items": {
       "interiorDesign": {
         "title": "Interior Design",
@@ -39,9 +40,15 @@
   },
   "about": {
     "label": "About Us",
-    "title": "Crafting Timeless Spaces",
+    "title1": "Crafting",
+    "title2": "Timeless Spaces",
     "description1": "At Adrichal Interior Design, we believe that exceptional design goes beyond aesthetics. It's about creating spaces that inspire, nurture, and evolve with you.",
     "description2": "Our team of passionate designers combines innovative thinking with meticulous attention to detail, ensuring every project we undertake becomes a masterpiece of form and function.",
+    "yearsLabel": "Years",
+    "ourStory": "Our Story",
+    "designExcellence": "Design Excellence",
+    "ourValues": "Our Values",
+    "ourTeam": "Our Team",
     "stats": {
       "projects": "Projects Completed",
       "years": "Years Experience",
@@ -51,14 +58,16 @@
   },
   "projectsShowcase": {
     "label": "Portfolio",
-    "title": "Featured Projects",
+    "title1": "Featured",
+    "title2": "Projects",
     "viewAll": "View All Projects",
     "hoverReveal": "Hover to reveal",
     "featuredWork": "Featured Work"
   },
   "contact": {
     "label": "Get in Touch",
-    "title": "Let's Create Something Beautiful",
+    "title1": "Let's Create",
+    "title2": "Something Beautiful",
     "description": "Ready to transform your space? We'd love to hear about your project and discuss how we can bring your vision to life.",
     "info": {
       "email": "Email",
@@ -76,7 +85,20 @@
       "commercial": "Commercial"
     },
     "viewProject": "View Project",
-    "backToProjects": "Back to Projects"
+    "backToProjects": "Back to Projects",
+    "location": "Location",
+    "year": "Year",
+    "area": "Area",
+    "interactiveExperience": "Interactive Experience",
+    "previous": "Previous",
+    "next": "Next",
+    "explore3d": "Explore in",
+    "3d": "3D",
+    "hide3dView": "Hide 3D View",
+    "viewRoom": "View Room",
+    "loading3d": "Loading 3D Scene...",
+    "dragToRotate": "Drag to rotate",
+    "scrollToZoom": "Scroll to zoom"
   },
   "blog": {
     "label": "Insights & Inspiration",
@@ -87,6 +109,14 @@
     "backToBlog": "Back to Blog",
     "by": "By",
     "minRead": "min read",
+    "tags": "Tags",
+    "continueReading": "Continue Reading",
+    "relatedArticles": "Related Articles",
+    "interiorDesignExpert": "Interior Design Expert",
+    "watchVideoForInsights": "Watch the related video for more insights",
+    "shareThisArticle": "Share this article",
+    "readyToTransform": "Ready to Transform Your Space?",
+    "letsTransformYourHome": "Let's bring these ideas to life in your home. Contact us for a consultation.",
     "categories": {
       "all": "All",
       "trends": "Trends",

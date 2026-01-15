@@ -15,7 +15,8 @@
       "storageUsed": "Storage Used"
     },
     "recentTenants": "Recent Tenants",
-    "recentUsers": "Recent Users"
+    "recentUsers": "Recent Users",
+    "quickActions": "Quick Actions"
   },
   "media": {
     "title": "Media Library",
@@ -38,7 +39,14 @@
     "formats": "PNG, JPG, WebP up to 10MB",
     "uploading": "Uploading...",
     "success": "Image uploaded successfully",
-    "error": "Failed to upload image"
+    "error": "Failed to upload image",
+    "fileTooLarge": "File is too large (max 10MB)",
+    "imagesUploaded": "{{count}} images uploaded successfully",
+    "uploadImages": "Upload {{count}} image(s)",
+    "imageDeleted": "Image deleted",
+    "deleteFailed": "Failed to delete image",
+    "uploadToFolder": "Upload to folder:",
+    "showingImages": "Showing {{shown}} of {{total}} images"
   },
   "imageEdit": {
     "title": "Edit Image",
@@ -53,6 +61,7 @@
     "title": "Admin Login",
     "subtitle": "Sign in to access the admin panel",
     "googleButton": "Sign in with Google",
+    "backToSite": "← Back to site",
     "errors": {
       "noToken": "Authentication failed. No token received.",
       "invalidToken": "Invalid authentication token.",
@@ -94,6 +103,7 @@
       "adminEmail": "Admin Email",
       "adminEmailPlaceholder": "admin@example.com",
       "adminEmailHint": "Enter email to auto-generate tenant data",
+      "quickSetup": "Quick Setup",
       "advancedOptions": "Advanced Options",
       "hideAdvanced": "Hide Advanced",
       "status": "Status",
@@ -151,6 +161,7 @@
       "platformName": "Platform Name",
       "version": "Version",
       "environment": "Environment",
+      "production": "Production",
       "apiUrl": "API URL",
       "overview": "Platform Overview",
       "totalTenants": "Total Tenants",
