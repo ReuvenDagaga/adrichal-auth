@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from 'react-icons/hi'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import {
@@ -18,27 +19,8 @@ import {
 
 const WHATSAPP_NUMBER = '972532813811'
 
-const contactInfo = [
-  {
-    icon: HiOutlineMail,
-    label: 'Email',
-    value: 'theoffice.ad.studio@gmail.com',
-    href: 'mailto:theoffice.ad.studio@gmail.com',
-  },
-  {
-    icon: HiOutlinePhone,
-    label: 'Phone',
-    value: '0532813811',
-    href: 'tel:0532813811',
-  },
-  {
-    icon: HiOutlineLocationMarker,
-    label: 'Studio',
-    value: 'Tel Aviv, Israel',
-  },
-]
-
 export default function Contact() {
+  const { t } = useTranslation('ui')
   const isMobile = useIsMobile()
   const { ref, isInView } = useScrollReveal()
   const [formData, setFormData] = useState({
@@ -48,16 +30,36 @@ export default function Contact() {
     message: '',
   })
 
+  const contactInfo = [
+    {
+      icon: HiOutlineMail,
+      label: t('contact.info.email'),
+      value: 'theoffice.ad.studio@gmail.com',
+      href: 'mailto:theoffice.ad.studio@gmail.com',
+    },
+    {
+      icon: HiOutlinePhone,
+      label: t('contact.info.phone'),
+      value: '0532813811',
+      href: 'tel:0532813811',
+    },
+    {
+      icon: HiOutlineLocationMarker,
+      label: t('contact.info.studio'),
+      value: t('contact.studioAddress'),
+    },
+  ]
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
     const message = `**
 
-*Name:* ${formData.name}
-*Email:* ${formData.email}
-*Phone:* ${formData.phone || 'Not specified'}
+*${t('contact.whatsapp.name')}:* ${formData.name}
+*${t('contact.whatsapp.email')}:* ${formData.email}
+*${t('contact.whatsapp.phone')}:* ${formData.phone || t('contact.whatsapp.notSpecified')}
 
-*Message:*
+*${t('contact.whatsapp.message')}:*
 ${formData.message}`
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
@@ -104,18 +106,17 @@ ${formData.message}`
             transition={{ duration: 0.8 }}
           >
             <Stack gap="lg">
-              <Label color="accent">Get in Touch</Label>
+              <Label color="accent">{t('contact.label')}</Label>
 
               <Heading level={2} size="heading-1">
-                Let's Create
+                {t('contact.title1')}
               </Heading>
               <Heading level={2} size="heading-1" className="italic font-extralight">
-                Something Beautiful
+                {t('contact.title2')}
               </Heading>
 
               <Text size="lg" color="muted" className="max-w-md">
-                Ready to transform your space? We'd love to hear about your project
-                and discuss how we can bring your vision to life.
+                {t('contact.description')}
               </Text>
 
               {/* Contact Info */}
@@ -153,39 +154,39 @@ ${formData.message}`
             <form onSubmit={handleSubmit}>
               <Stack gap={isMobile ? "md" : "lg"}>
                 <Input
-                  label="Your Name"
+                  label={t('form.labels.name')}
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder={t('form.placeholders.name')}
                   required
                 />
 
                 <Input
-                  label="Email Address"
+                  label={t('form.labels.email')}
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="john@example.com"
+                  placeholder={t('form.placeholders.email')}
                   required
                 />
 
                 <Input
-                  label="Phone Number"
+                  label={t('form.labels.phone')}
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+972 50 000 0000"
+                  placeholder={t('form.placeholders.phone')}
                 />
 
                 <Textarea
-                  label="Your Message"
+                  label={t('form.labels.message')}
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your project..."
+                  placeholder={t('form.placeholders.message')}
                   rows={4}
                   required
                 />
@@ -196,7 +197,7 @@ ${formData.message}`
                   size="lg"
                   fullWidth
                 >
-                  Send Message
+                  {t('buttons.sendMessage')}
                 </Button>
               </Stack>
             </form>

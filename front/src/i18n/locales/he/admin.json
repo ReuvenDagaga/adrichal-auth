@@ -3,15 +3,20 @@
     "dashboard": "לוח בקרה",
     "mediaLibrary": "ספריית מדיה",
     "settings": "הגדרות",
-    "logout": "התנתק"
+    "logout": "התנתק",
+    "backToAdmin": "חזרה לאדמין"
   },
   "dashboard": {
     "title": "לוח בקרה",
     "welcome": "ברוך הבא",
+    "subtitle": "סקירת מערכת וניהול",
     "stats": {
       "totalImages": "סה\"כ תמונות",
       "storageUsed": "אחסון בשימוש"
-    }
+    },
+    "recentTenants": "לקוחות אחרונים",
+    "recentUsers": "משתמשים אחרונים",
+    "quickActions": "פעולות מהירות"
   },
   "media": {
     "title": "ספריית מדיה",
@@ -34,7 +39,14 @@
     "formats": "PNG, JPG, WebP עד 10MB",
     "uploading": "מעלה...",
     "success": "התמונה הועלתה בהצלחה",
-    "error": "העלאת התמונה נכשלה"
+    "error": "העלאת התמונה נכשלה",
+    "fileTooLarge": "הקובץ גדול מדי (מקסימום 10MB)",
+    "imagesUploaded": "{{count}} תמונות הועלו בהצלחה",
+    "uploadImages": "העלה {{count}} תמונות",
+    "imageDeleted": "התמונה נמחקה",
+    "deleteFailed": "מחיקת התמונה נכשלה",
+    "uploadToFolder": "העלה לתיקייה:",
+    "showingImages": "מציג {{shown}} מתוך {{total}} תמונות"
   },
   "imageEdit": {
     "title": "עריכת תמונה",
@@ -49,6 +61,7 @@
     "title": "כניסת מנהל",
     "subtitle": "התחבר כדי לגשת לפאנל הניהול",
     "googleButton": "התחבר עם Google",
+    "backToSite": "← חזרה לאתר",
     "errors": {
       "noToken": "האימות נכשל. לא התקבל טוקן.",
       "invalidToken": "טוקן אימות לא תקין.",
@@ -64,15 +77,35 @@
   },
   "superAdmin": {
     "title": "סופר אדמין",
+    "subtitle": "סקירת מערכת וניהול",
     "tenants": {
       "title": "לקוחות",
+      "subtitle": "נהל את כל הלקוחות במערכת",
       "create": "צור לקוח",
       "edit": "ערוך לקוח",
       "name": "שם",
+      "namePlaceholder": "שם הסטודיו",
       "slug": "מזהה",
+      "slugPlaceholder": "studio-name",
+      "slugHint": "אותיות קטנות באנגלית, מספרים ומקפים בלבד",
       "domains": "דומיינים",
+      "domainsPlaceholder": "domain1.com, domain2.com",
+      "domainsHint": "רשימה מופרדת בפסיקים",
       "primaryDomain": "דומיין ראשי",
+      "primaryDomainPlaceholder": "main-domain.com",
       "contactEmail": "אימייל ליצירת קשר",
+      "contactEmailPlaceholder": "admin@studio.com",
+      "brandColor": "צבע מותג",
+      "logoUrl": "קישור ללוגו",
+      "allowedAdminEmails": "אימיילים מורשים לאדמין",
+      "allowedAdminEmailsPlaceholder": "admin1@email.com, admin2@email.com",
+      "allowedAdminEmailsHint": "מופרדים בפסיקים. השאר ריק כדי לאפשר כל אימייל.",
+      "adminEmail": "אימייל אדמין",
+      "adminEmailPlaceholder": "admin@example.com",
+      "adminEmailHint": "הזן אימייל ליצירת נתוני לקוח אוטומטית",
+      "quickSetup": "הגדרה מהירה",
+      "advancedOptions": "אפשרויות מתקדמות",
+      "hideAdvanced": "הסתר מתקדם",
       "status": "סטטוס",
       "active": "פעיל",
       "inactive": "לא פעיל",
@@ -80,10 +113,20 @@
       "noTenants": "לא נמצאו לקוחות",
       "created": "הלקוח נוצר בהצלחה",
       "updated": "הלקוח עודכן בהצלחה",
-      "deleted": "הלקוח נמחק בהצלחה"
+      "deleted": "הלקוח נמחק בהצלחה",
+      "confirmDelete": "האם אתה בטוח שברצונך למחוק את \"{{name}}\"?",
+      "errors": {
+        "nameRequired": "שם הוא שדה חובה",
+        "slugRequired": "מזהה הוא שדה חובה (אותיות קטנות, מספרים ומקפים בלבד)",
+        "domainsRequired": "נדרש לפחות דומיין אחד",
+        "primaryDomainRequired": "דומיין ראשי הוא שדה חובה",
+        "contactEmailRequired": "נדרש אימייל תקין",
+        "deleteFailed": "מחיקת הלקוח נכשלה"
+      }
     },
     "users": {
       "title": "משתמשים",
+      "subtitle": "נהל את כל המשתמשים במערכת",
       "email": "אימייל",
       "name": "שם",
       "role": "תפקיד",
@@ -92,7 +135,44 @@
       "actions": "פעולות",
       "noUsers": "לא נמצאו משתמשים",
       "roleUpdated": "תפקיד המשתמש עודכן",
-      "deleted": "המשתמש נמחק"
+      "deleted": "המשתמש נמחק",
+      "confirmDelete": "האם אתה בטוח שברצונך למחוק את \"{{name}}\"?",
+      "filter": "סנן לפי תפקיד",
+      "filterAll": "כל התפקידים",
+      "searchPlaceholder": "חפש לפי שם או אימייל...",
+      "selectTenant": "בחר לקוח",
+      "noTenant": "ללא לקוח",
+      "assignTenant": "הקצה לקוח",
+      "errors": {
+        "updateFailed": "עדכון התפקיד נכשל",
+        "deleteFailed": "מחיקת המשתמש נכשלה"
+      }
+    },
+    "roles": {
+      "super_admin": "סופר אדמין",
+      "admin": "אדמין",
+      "tenant_admin": "אדמין לקוח",
+      "user": "משתמש"
+    },
+    "settings": {
+      "title": "הגדרות",
+      "subtitle": "תצורת פלטפורמה ומידע",
+      "platformInfo": "מידע על הפלטפורמה",
+      "platformName": "שם הפלטפורמה",
+      "version": "גרסה",
+      "environment": "סביבה",
+      "production": "ייצור",
+      "apiUrl": "כתובת API",
+      "overview": "סקירת פלטפורמה",
+      "totalTenants": "סה\"כ לקוחות",
+      "totalUsers": "סה\"כ משתמשים",
+      "roleDistribution": "התפלגות תפקידים",
+      "superAdmins": "סופר אדמינים",
+      "tenantAdmins": "אדמיני לקוחות",
+      "regularUsers": "משתמשים רגילים",
+      "tenantDefaults": "ברירות מחדל ללקוחות",
+      "defaultActiveStatus": "סטטוס פעיל כברירת מחדל",
+      "adminEmailPromotion": "קידום אוטומטי לפי אימייל אדמין"
     },
     "stats": {
       "totalTenants": "סה\"כ לקוחות",
@@ -113,6 +193,8 @@
     "confirm": "אישור",
     "yes": "כן",
     "no": "לא",
-    "back": "חזרה"
+    "back": "חזרה",
+    "required": "חובה",
+    "optional": "אופציונלי"
   }
 }

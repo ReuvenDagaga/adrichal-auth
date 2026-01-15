@@ -1,10 +1,12 @@
 import { useRef } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { blogPosts } from '../data/blog'
 import ReactMarkdown from 'react-markdown'
 
 export default function BlogPost() {
+  const { t } = useTranslation('ui')
   const { id } = useParams<{ id: string }>()
   const headerRef = useRef<HTMLDivElement>(null)
   const isHeaderInView = useInView(headerRef, { once: true })
@@ -50,7 +52,7 @@ export default function BlogPost() {
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
           </svg>
-          <span className="text-sm tracking-wider uppercase">Back to Blog</span>
+          <span className="text-sm tracking-wider uppercase">{t('blog.backToBlog')}</span>
         </Link>
 
         {/* Title Section */}
@@ -95,7 +97,7 @@ export default function BlogPost() {
               </div>
               <div>
                 <p className="text-white font-medium">{post.author}</p>
-                <p className="text-white/50 text-sm">Interior Design Expert</p>
+                <p className="text-white/50 text-sm">{t('blog.interiorDesignExpert')}</p>
               </div>
             </motion.div>
 
@@ -126,7 +128,7 @@ export default function BlogPost() {
                     allowFullScreen
                   />
                 </div>
-                <p className="text-white/40 text-sm mt-3 text-center">Watch the related video for more insights</p>
+                <p className="text-white/40 text-sm mt-3 text-center">{t('blog.watchVideoForInsights')}</p>
               </motion.div>
             )}
 
@@ -154,7 +156,7 @@ export default function BlogPost() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="mt-12 pt-12 border-t border-white/10"
             >
-              <p className="text-white/50 text-sm uppercase tracking-wider mb-4">Tags</p>
+              <p className="text-white/50 text-sm uppercase tracking-wider mb-4">{t('blog.tags')}</p>
               <div className="flex flex-wrap gap-3">
                 {post.tags.map(tag => (
                   <span
@@ -174,7 +176,7 @@ export default function BlogPost() {
               transition={{ duration: 0.6, delay: 0.55 }}
               className="mt-12 pt-12 border-t border-white/10"
             >
-              <p className="text-white/50 text-sm uppercase tracking-wider mb-4">Share this article</p>
+              <p className="text-white/50 text-sm uppercase tracking-wider mb-4">{t('blog.shareThisArticle')}</p>
               <div className="flex gap-4">
                 {['Facebook', 'Twitter', 'LinkedIn', 'Pinterest'].map(platform => (
                   <button
@@ -195,8 +197,8 @@ export default function BlogPost() {
         <section className="py-24 bg-black/30">
           <div className="container mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">Continue Reading</p>
-              <h2 className="text-3xl md:text-4xl font-light text-white">Related Articles</h2>
+              <p className="text-gold text-sm tracking-[0.4em] uppercase mb-4">{t('blog.continueReading')}</p>
+              <h2 className="text-3xl md:text-4xl font-light text-white">{t('blog.relatedArticles')}</h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -241,16 +243,16 @@ export default function BlogPost() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
-              Ready to Transform Your Space?
+              {t('blog.readyToTransform')}
             </h2>
             <p className="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
-              Let's bring these ideas to life in your home. Contact us for a consultation.
+              {t('blog.letsTransformYourHome')}
             </p>
             <Link
               to="/contact"
               className="inline-block px-8 py-4 bg-gold text-black text-sm tracking-[0.2em] uppercase font-medium hover:bg-white transition-colors duration-300"
             >
-              Get in Touch
+              {t('buttons.getInTouch')}
             </Link>
           </motion.div>
         </div>

@@ -1,23 +1,26 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-
-const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'Contact', path: '/contact' },
-]
+import { useTranslation } from 'react-i18next'
+import { LanguageSwitcher } from '../ui/LanguageSwitcher'
 
 interface NavbarProps {
   logoSrc?: string
 }
 
 export default function Navbar({ logoSrc = '/logo.png' }: NavbarProps) {
+  const { t } = useTranslation('ui')
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const location = useLocation()
+
+  const navLinks = [
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.about'), path: '/about' },
+    { name: t('nav.projects'), path: '/projects' },
+    { name: t('nav.blog'), path: '/blog' },
+    { name: t('nav.contact'), path: '/contact' },
+  ]
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -41,9 +44,9 @@ export default function Navbar({ logoSrc = '/logo.png' }: NavbarProps) {
           WebkitBackdropFilter: isScrolled ? 'blur(24px) saturate(150%)' : 'blur(16px) saturate(150%)',
         }}
       >
-        <div className="flex items-center justify-between h-20 px-4 lg:px-16">
-          {/* Logo - Left */}
-          <Link to="/" className="flex-shrink-0 mr-auto lg:mr-0">
+        <div className="flex items-center justify-between h-20 px-4 lg:px-16 flex-row-reverse">
+          {/* Logo */}
+          <Link to="/" className="flex-shrink-0">
             <img
               src={logoSrc}
               alt="Logo"
@@ -51,8 +54,8 @@ export default function Navbar({ logoSrc = '/logo.png' }: NavbarProps) {
             />
           </Link>
 
-          {/* Navigation Links - Right */}
-          <nav className="hidden lg:flex items-center gap-8">
+          {/* Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-8" dir="ltr">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -66,6 +69,9 @@ export default function Navbar({ logoSrc = '/logo.png' }: NavbarProps) {
                 {link.name}
               </Link>
             ))}
+
+            {/* Language Switcher */}
+            <LanguageSwitcher />
           </nav>
 
           {/* Mobile Menu Button */}
@@ -106,6 +112,11 @@ export default function Navbar({ logoSrc = '/logo.png' }: NavbarProps) {
                   {link.name}
                 </Link>
               ))}
+
+              {/* Language Switcher in Mobile Menu */}
+              <div className="pt-4">
+                <LanguageSwitcher />
+              </div>
             </nav>
           </motion.div>
         )}

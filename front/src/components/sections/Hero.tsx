@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import HeroScene from '../3d/HeroScene'
+import { useTranslation } from 'react-i18next'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import {
   Section,
@@ -14,31 +14,28 @@ import {
 const easeOutExpo: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 export default function Hero() {
+  const { t } = useTranslation('ui')
   const isMobile = useIsMobile()
 
   return (
     <Section padding="none" className="h-screen">
-      {/* 3D Background for desktop, static image for mobile */}
-      {isMobile ? (
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
-            alt="Interior Design"
-            className="w-full h-full object-cover brightness-75"
-          />
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
-      ) : (
-        <HeroScene />
-      )}
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
+          alt="Interior Design"
+          className="w-full h-full object-cover brightness-75"
+        />
+        <div className="absolute inset-0 bg-black/30" />
+      </div>
 
       {/* Content Overlay */}
-      <div className="absolute inset-y-0 left-0 z-10 pointer-events-none w-full lg:w-3/5 xl:w-1/2">
+      <div className="absolute inset-y-0 ltr:left-0 rtl:right-0 z-10 pointer-events-none w-full lg:w-3/5 xl:w-1/2">
         {/* Dark gradient background for text readability */}
         <div className={`absolute inset-0 ${
           isMobile
             ? 'bg-black/20'
-            : 'bg-gradient-to-r from-black/90 via-black/70 to-transparent'
+            : 'ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-black/90 via-black/70 to-transparent'
         }`} />
 
         <div className="relative h-full flex items-center px-4 sm:px-8 lg:px-20">
@@ -55,7 +52,7 @@ export default function Hero() {
                 transition={{ duration: 1, delay: 0.8 }}
               >
                 <Label color="accent" className={isMobile ? "text-xs" : ""}>
-                  Luxury Interior Design
+                  {t('hero.label')}
                 </Label>
               </motion.div>
 
@@ -67,16 +64,16 @@ export default function Hero() {
                 <Heading
                   level={1}
                   size={isMobile ? "heading-1" : "display-1"}
-                  className={`text-left ${isMobile ? '' : 'whitespace-nowrap'}`}
+                  className={`ltr:text-left rtl:text-right ${isMobile ? '' : 'whitespace-nowrap'}`}
                 >
-                  Creating Spaces
+                  {t('hero.title1')}
                 </Heading>
                 <Heading
                   level={1}
                   size={isMobile ? "heading-1" : "display-1"}
-                  className="text-left italic font-thin text-gradient"
+                  className="ltr:text-left rtl:text-right italic font-thin text-gradient"
                 >
-                  That Inspire
+                  {t('hero.title2')}
                 </Heading>
               </motion.div>
 
@@ -89,10 +86,9 @@ export default function Hero() {
                 <Text
                   size={isMobile ? "base" : "lg"}
                   color="subtle"
-                  className="text-left leading-relaxed"
+                  className="ltr:text-left rtl:text-right leading-relaxed"
                 >
-                  We design exceptional interiors that transform the way you live,
-                  blending timeless elegance with modern sophistication.
+                  {t('hero.description')}
                 </Text>
               </motion.div>
 
@@ -114,7 +110,7 @@ export default function Hero() {
                     to="/projects"
                     className={isMobile ? "w-full sm:w-auto" : ""}
                   >
-                    View Projects
+                    {t('buttons.viewProjects')}
                   </Button>
                   <Button
                     variant="outline"
@@ -122,7 +118,7 @@ export default function Hero() {
                     to="/contact"
                     className={isMobile ? "w-full sm:w-auto" : ""}
                   >
-                    Get in Touch
+                    {t('buttons.getInTouch')}
                   </Button>
                 </Stack>
               </motion.div>
@@ -143,7 +139,7 @@ export default function Hero() {
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           className="flex flex-col items-center gap-4"
         >
-          <Label color="muted" className="text-[10px]">Scroll</Label>
+          <Label color="muted" className="text-[10px]">{t('hero.scroll')}</Label>
           <div className="w-[1px] h-16 bg-gradient-to-b from-gold/40 via-gold/20 to-transparent" />
         </motion.div>
       </motion.div>
@@ -153,14 +149,14 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5 }}
-        className="absolute left-10 top-1/2 -translate-y-1/2 z-10 hidden xl:block pointer-events-none"
+        className="absolute ltr:left-10 rtl:right-10 top-1/2 -translate-y-1/2 z-10 hidden xl:block pointer-events-none"
       >
         <Text
           size="xs"
           color="faint"
           className="tracking-[0.4em] uppercase [writing-mode:vertical-rl] rotate-180"
         >
-          Interior Design Studio
+          {t('hero.sideText1')}
         </Text>
       </motion.div>
 
@@ -168,14 +164,14 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5 }}
-        className="absolute right-10 top-1/2 -translate-y-1/2 z-10 hidden xl:block pointer-events-none"
+        className="absolute ltr:right-10 rtl:left-10 top-1/2 -translate-y-1/2 z-10 hidden xl:block pointer-events-none"
       >
         <Text
           size="xs"
           color="faint"
           className="tracking-[0.4em] uppercase [writing-mode:vertical-rl]"
         >
-          Est. 2024 — Tel Aviv
+          {t('hero.sideText2')}
         </Text>
       </motion.div>
 

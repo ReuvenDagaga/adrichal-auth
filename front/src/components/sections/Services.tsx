@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import {
   Section,
@@ -13,32 +14,33 @@ import {
   StaggerItem,
 } from '../../design-system'
 
-const services = [
-  {
-    number: '01',
-    title: 'Interior Design',
-    description: 'Complete interior design solutions from concept to execution, creating spaces that reflect your unique style.',
-  },
-  {
-    number: '02',
-    title: 'Space Planning',
-    description: 'Strategic space optimization that maximizes functionality while maintaining aesthetic excellence.',
-  },
-  {
-    number: '03',
-    title: 'Furniture Design',
-    description: 'Custom furniture pieces designed and crafted to perfectly complement your interior vision.',
-  },
-  {
-    number: '04',
-    title: '3D Visualization',
-    description: 'Photorealistic 3D renderings that bring your design concepts to life before construction begins.',
-  },
-]
-
 export default function Services() {
+  const { t } = useTranslation('ui')
   const isMobile = useIsMobile()
   const { ref, isInView } = useScrollReveal()
+
+  const services = [
+    {
+      number: '01',
+      title: t('services.items.interiorDesign.title'),
+      description: t('services.items.interiorDesign.description'),
+    },
+    {
+      number: '02',
+      title: t('services.items.spacePlanning.title'),
+      description: t('services.items.spacePlanning.description'),
+    },
+    {
+      number: '03',
+      title: t('services.items.furnitureDesign.title'),
+      description: t('services.items.furnitureDesign.description'),
+    },
+    {
+      number: '04',
+      title: t('services.items.visualization.title'),
+      description: t('services.items.visualization.description'),
+    },
+  ]
 
   return (
     <Section background="default">
@@ -70,12 +72,12 @@ export default function Services() {
           transition={{ duration: 0.8 }}
           className="mb-12 sm:mb-16 lg:mb-20 max-w-2xl"
         >
-          <Label color="accent" className="mb-3 sm:mb-4 block">What We Do</Label>
+          <Label color="accent" className="mb-3 sm:mb-4 block">{t('services.label')}</Label>
           <Heading level={2} size="heading-1">
-            Our
+            {t('services.title1')}
           </Heading>
           <Heading level={2} size="heading-1" className="italic font-extralight">
-            Services
+            {t('services.title2')}
           </Heading>
         </motion.div>
 

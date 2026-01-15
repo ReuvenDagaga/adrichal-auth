@@ -3,15 +3,20 @@
     "dashboard": "Dashboard",
     "mediaLibrary": "Media Library",
     "settings": "Settings",
-    "logout": "Logout"
+    "logout": "Logout",
+    "backToAdmin": "Back to Admin"
   },
   "dashboard": {
     "title": "Admin Dashboard",
     "welcome": "Welcome back",
+    "subtitle": "System overview and management",
     "stats": {
       "totalImages": "Total Images",
       "storageUsed": "Storage Used"
-    }
+    },
+    "recentTenants": "Recent Tenants",
+    "recentUsers": "Recent Users",
+    "quickActions": "Quick Actions"
   },
   "media": {
     "title": "Media Library",
@@ -34,7 +39,14 @@
     "formats": "PNG, JPG, WebP up to 10MB",
     "uploading": "Uploading...",
     "success": "Image uploaded successfully",
-    "error": "Failed to upload image"
+    "error": "Failed to upload image",
+    "fileTooLarge": "File is too large (max 10MB)",
+    "imagesUploaded": "{{count}} images uploaded successfully",
+    "uploadImages": "Upload {{count}} image(s)",
+    "imageDeleted": "Image deleted",
+    "deleteFailed": "Failed to delete image",
+    "uploadToFolder": "Upload to folder:",
+    "showingImages": "Showing {{shown}} of {{total}} images"
   },
   "imageEdit": {
     "title": "Edit Image",
@@ -49,6 +61,7 @@
     "title": "Admin Login",
     "subtitle": "Sign in to access the admin panel",
     "googleButton": "Sign in with Google",
+    "backToSite": "← Back to site",
     "errors": {
       "noToken": "Authentication failed. No token received.",
       "invalidToken": "Invalid authentication token.",
@@ -64,15 +77,35 @@
   },
   "superAdmin": {
     "title": "Super Admin",
+    "subtitle": "System overview and management",
     "tenants": {
       "title": "Tenants",
+      "subtitle": "Manage all tenants in the system",
       "create": "Create Tenant",
       "edit": "Edit Tenant",
       "name": "Name",
+      "namePlaceholder": "Studio Name",
       "slug": "Slug",
+      "slugPlaceholder": "studio-name",
+      "slugHint": "Lowercase letters, numbers, and dashes only",
       "domains": "Domains",
+      "domainsPlaceholder": "domain1.com, domain2.com",
+      "domainsHint": "Comma-separated list of domains",
       "primaryDomain": "Primary Domain",
+      "primaryDomainPlaceholder": "main-domain.com",
       "contactEmail": "Contact Email",
+      "contactEmailPlaceholder": "admin@studio.com",
+      "brandColor": "Brand Color",
+      "logoUrl": "Logo URL",
+      "allowedAdminEmails": "Allowed Admin Emails",
+      "allowedAdminEmailsPlaceholder": "admin1@email.com, admin2@email.com",
+      "allowedAdminEmailsHint": "Comma-separated. Leave empty to allow any email.",
+      "adminEmail": "Admin Email",
+      "adminEmailPlaceholder": "admin@example.com",
+      "adminEmailHint": "Enter email to auto-generate tenant data",
+      "quickSetup": "Quick Setup",
+      "advancedOptions": "Advanced Options",
+      "hideAdvanced": "Hide Advanced",
       "status": "Status",
       "active": "Active",
       "inactive": "Inactive",
@@ -80,10 +113,20 @@
       "noTenants": "No tenants found",
       "created": "Tenant created successfully",
       "updated": "Tenant updated successfully",
-      "deleted": "Tenant deleted successfully"
+      "deleted": "Tenant deleted successfully",
+      "confirmDelete": "Are you sure you want to delete \"{{name}}\"?",
+      "errors": {
+        "nameRequired": "Name is required",
+        "slugRequired": "Slug is required (lowercase letters, numbers, and dashes only)",
+        "domainsRequired": "At least one domain is required",
+        "primaryDomainRequired": "Primary domain is required",
+        "contactEmailRequired": "Valid email is required",
+        "deleteFailed": "Failed to delete tenant"
+      }
     },
     "users": {
       "title": "Users",
+      "subtitle": "Manage all users in the system",
       "email": "Email",
       "name": "Name",
       "role": "Role",
@@ -92,7 +135,44 @@
       "actions": "Actions",
       "noUsers": "No users found",
       "roleUpdated": "User role updated",
-      "deleted": "User deleted"
+      "deleted": "User deleted",
+      "confirmDelete": "Are you sure you want to delete \"{{name}}\"?",
+      "filter": "Filter by role",
+      "filterAll": "All Roles",
+      "searchPlaceholder": "Search by name or email...",
+      "selectTenant": "Select Tenant",
+      "noTenant": "No Tenant",
+      "assignTenant": "Assign Tenant",
+      "errors": {
+        "updateFailed": "Failed to update role",
+        "deleteFailed": "Failed to delete user"
+      }
+    },
+    "roles": {
+      "super_admin": "Super Admin",
+      "admin": "Admin",
+      "tenant_admin": "Tenant Admin",
+      "user": "User"
+    },
+    "settings": {
+      "title": "Settings",
+      "subtitle": "Platform configuration and information",
+      "platformInfo": "Platform Information",
+      "platformName": "Platform Name",
+      "version": "Version",
+      "environment": "Environment",
+      "production": "Production",
+      "apiUrl": "API URL",
+      "overview": "Platform Overview",
+      "totalTenants": "Total Tenants",
+      "totalUsers": "Total Users",
+      "roleDistribution": "Role Distribution",
+      "superAdmins": "Super Admins",
+      "tenantAdmins": "Tenant Admins",
+      "regularUsers": "Regular Users",
+      "tenantDefaults": "Tenant Defaults",
+      "defaultActiveStatus": "Default Active Status",
+      "adminEmailPromotion": "Admin Email Auto-Promotion"
     },
     "stats": {
       "totalTenants": "Total Tenants",
@@ -113,6 +193,8 @@
     "confirm": "Confirm",
     "yes": "Yes",
     "no": "No",
-    "back": "Back"
+    "back": "Back",
+    "required": "Required",
+    "optional": "Optional"
   }
 }

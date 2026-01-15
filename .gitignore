@@ -26,6 +26,7 @@ dist-ssr
 dist/
 node_modules
 .env
+.env copy
 myenv
 bot-configs
 bot_trades

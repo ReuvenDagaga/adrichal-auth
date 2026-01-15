@@ -36,7 +36,7 @@ export function ImageUpload({ folder, onSuccess }: ImageUploadProps) {
 
       // Check file size (10MB)
       if (file.size > 10 * 1024 * 1024) {
-        toast.error('File is too large (max 10MB)');
+        toast.error(t('media.fileTooLarge'));
         return;
       }
 

@@ -22,6 +22,7 @@ import SuperAdminDashboard from './pages/super-admin/Dashboard';
 import SuperAdminTenants from './pages/super-admin/Tenants';
 import SuperAdminTenantForm from './pages/super-admin/TenantForm';
 import SuperAdminUsers from './pages/super-admin/Users';
+import SuperAdminSettings from './pages/super-admin/Settings';
 
 // Route Guards
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
@@ -30,7 +31,6 @@ import { SuperAdminRoute } from './components/auth/SuperAdminRoute';
 // Layout
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import Cursor from './components/ui/Cursor';
 import WhatsAppButton from './components/ui/WhatsAppButton';
 import PageTransition from './components/ui/PageTransition';
 
@@ -90,6 +90,14 @@ function AppContent() {
             </SuperAdminRoute>
           }
         />
+        <Route
+          path="/super-admin/settings"
+          element={
+            <SuperAdminRoute>
+              <SuperAdminSettings />
+            </SuperAdminRoute>
+          }
+        />
       </Routes>
     );
   }
@@ -123,7 +131,6 @@ function AppContent() {
   // Public routes with full design
   return (
     <>
-      <Cursor />
       <Navbar />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>

@@ -18,7 +18,7 @@ const socialLinks = [
 ]
 
 export default function Footer() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('ui')
 
   const quickLinks = [
     { name: t('nav.home'), path: '/' },
@@ -82,7 +82,7 @@ export default function Footer() {
                 theoffice.ad.studio@gmail.com
               </a>
               <Text size="sm" color="muted">
-                {t('contact.info.studio')}: תל אביב
+                {t('contact.studioAddress')}
               </Text>
             </Stack>
           </div>
@@ -112,7 +112,7 @@ export default function Footer() {
           <Text size="xs" color="subtle" className="tracking-wider">
             © {new Date().getFullYear()} ADRICHAL. {t('footer.copyright')}
           </Text>
-          <div className="flex gap-6 rtl:flex-row-reverse">
+          <div className="flex gap-6">
             <Link
               to="/privacy"
               className="text-foreground-subtle text-xs hover:text-foreground transition-colors duration-300"
